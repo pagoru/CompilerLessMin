@@ -28,19 +28,25 @@ public class CompilerLessMin {
 		boolean loop = true;
 		loadConfig();
 		
+		LessCompiler lessCompiler = new LessCompiler();
+		
 		while(loop){
 			String current = read();
 			
 			switch (current) {
-			case "compile":
-				LessCompiler lessCompiler = new LessCompiler();
-				
+			case "compile-min":				
 				FileWriter writer = new FileWriter(
 						new File(config.getProperty("css")));
 		        writer.append(getMinified(lessCompiler.compile(new File(config.getProperty("less")))));
 		        writer.close();
 				
 				System.out.println("Compiled less, minified and saved.");
+				break;
+				
+			case "compile":
+				lessCompiler.compile(new File(config.getProperty("css")), new File(config.getProperty("less")));
+				
+				System.out.println("Compiled less and saved.");
 				break;
 			
 			case "stop":
