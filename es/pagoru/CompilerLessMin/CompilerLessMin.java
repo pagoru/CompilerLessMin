@@ -44,7 +44,7 @@ public class CompilerLessMin {
 				break;
 				
 			case "compile":
-				lessCompiler.compile(new File(config.getProperty("css")), new File(config.getProperty("less")));
+				lessCompiler.compile(new File(config.getProperty("less")), new File(config.getProperty("css")));
 				
 				System.out.println("Compiled less and saved.");
 				break;
